@@ -18,9 +18,15 @@ function App() {
     }, 0);
   };
 
-  const triggerUnhandledRejection = () => {
-    // This will be caught by unhandledrejection
-    Promise.reject(new Error('Unhandled promise rejection!'));
+  const triggerUnhandledRejection = async () => {
+    try {
+      // Await the rejection so it is properly caught
+      await Promise.reject(new Error('Unhandled promise rejection!'));
+    } catch (error) {
+      // Handle or re-report the error intentionally
+      console.error('Caught intentional rejection:', error);
+      // Optionally: DebugFast.captureError(error as Error);
+    }
   };
 
   const triggerManualCapture = () => {
