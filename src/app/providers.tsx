@@ -6,6 +6,7 @@ import { DebugFastErrorBoundary } from 'debugfast-js/react';
 if (typeof window !== 'undefined') {
   DebugFast.init({
     apiKey: process.env.NEXT_PUBLIC_DEBUGFAST_API_KEY!,
+    apiEndpoint: 'https://debugfastingestion-staging.up.railway.app/v1/events',
     captureScreenshot: true,
     captureConsole: true,
     captureNetwork: true,
